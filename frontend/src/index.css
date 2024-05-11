@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+
+  color: rgba(255, 255, 255, 0.87);
+  background-color: rgb(17, 17, 17);
+}
+
+
+.icon-container {
+  border-radius: 50%;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  transition: .3s ease-in-out;
+}
+
+.icon-container:hover {
+  background-color: "#1e1e1e";
+}
