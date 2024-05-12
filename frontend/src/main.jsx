@@ -12,7 +12,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <RecoilRoot>
 
       <ChakraProvider >
-        <App />
+          <App />
+
       </ChakraProvider>
     </RecoilRoot>
   </Router>
