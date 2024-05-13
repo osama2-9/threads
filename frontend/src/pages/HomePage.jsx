@@ -58,12 +58,10 @@ const HomePage = () => {
           )
         }
 
-     {posts.map((post) => (
-        <Post key={post._id} post={post} postBy={post.postBy} />
-      ))}
         {posts.map((post) => (
           <Post key={post._id} post={post} postBy={post.postBy} />
         ))}
+
       </Box>
       <Box flex={30}>
         <SuggustedUser />

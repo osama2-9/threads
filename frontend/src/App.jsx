@@ -17,28 +17,28 @@ function App() {
   const user = useRecoilValue(userAtom)
   return (
     <>
-    <Box
-    position={'relative'}
-    w={'full'}
-    >
+      <Box
+        position={'relative'}
+        w={'full'}
+      >
 
 
-      <Container maxH={'670px'} >
+        <Container maxH={'670px'} >
 
-        <Header />
-        <Routes >
-          <Route path='/' element={user ? <HomePage /> : <Navigate to={'/auth'} />} />
-          <Route path='/auth' element={!user ? <AuthPage /> : <Navigate to={'/'} />} />
-          <Route path='/update' element={user ? <UpdateProfile /> : <Navigate to={'/auth'} />} />
-          <Route path='/:username' element={<UserPage />} />
-          <Route path='/:username/post/:pid' element={<PostPage />} />
-          <Route path='/chat' element={user ? <ChatPage /> : <Navigate to={'/auth'} />} />
-        </Routes>
+          <Header />
+          <Routes >
+            <Route path='/' element={user ? <HomePage /> : <Navigate to={'/auth'} />} />
+            <Route path='/auth' element={!user ? <AuthPage /> : <Navigate to={'/'} />} />
+            <Route path='/update' element={user ? <UpdateProfile /> : <Navigate to={'/auth'} />} />
+            <Route path='/:username' element={<UserPage />} />
+            <Route path='/:username/post/:pid' element={<PostPage />} />
+            <Route path='/chat' element={user ? <ChatPage /> : <Navigate to={'/auth'} />} />
+          </Routes>
 
 
-        {user && <CreatePost />}
-      </Container>
-    </Box>
+          {user && <CreatePost />}
+        </Container>
+      </Box>
 
     </>
 
