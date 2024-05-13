@@ -23,10 +23,14 @@ const Header = () => {
                 <Flex alignItems="center" gap={5}>
                     <Link to={`/${user.username}`} as={RouterLink}>
                         <BsPerson size={20} />
+<<<<<<< HEAD
                     </Link>
                     <Link to="/chat" as={RouterLink}>
                         <BsChat size={20} />
+=======
+>>>>>>> 3d42c722071015894576ba73030903782d27a3d4
                     </Link>
+
                     <Button
                         onClick={handleLogout}
                         size="sm"
