@@ -1,4 +1,4 @@
-import Conversation from "../models/conversationModel.js";
+import Conversation from "../models/conversationsModel.js";
 import Message from "../models/messageModel.js";
 import { v2 as cloudinary } from "cloudinary";
 

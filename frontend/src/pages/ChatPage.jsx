@@ -23,6 +23,7 @@ const ChatPage = () => {
 
                 const res = await fetch('/api/messages/conversations')
                 const data = await res.json()
+                console.log(data);
                 if (data.error) {
                     toast({
                         title: "error",
@@ -32,17 +33,18 @@ const ChatPage = () => {
                         isClosable: true
                     })
                 }
-                console.log(data);
+                console.log("GET " + data);
                 setConvsersations(data)
 
+
             } catch (error) {
-                toast({
-                    title: "error",
-                    description: error.message,
-                    duration: 3000,
-                    status: "error",
-                    isClosable: true
-                })
+                // toast({
+                //     title: "error",
+                //     description: error.message,
+                //     duration: 3000,
+                //     status: "error",
+                //     isClosable: true
+                // })
             } finally {
                 setLoadingConvsersations(false)
             }

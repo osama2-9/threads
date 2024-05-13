@@ -15,38 +15,28 @@ const MessageContainer = () => {
     const logged = useRecoilValue(userAtom)
     useEffect(() => {
         const getMessages = async () => {
+            setLoadingMessaegs(true);
+            setMessages([]);
             try {
-                setLoadingMessaegs(true)
-                setMessages([])
                 if (selectedConversation.mock) return;
-                const res = await fetch(`/api/messages/${selectedConversation.userId}`)
-                const data = await res.json()
+                const res = await fetch(`/api/messages/${selectedConversation.userId}`);
+                const data = await res.json();
                 if (data.error) {
-                    toast({
-                        title: "error",
-                        description: data.error,
-                        duration: 3000,
-                        isClosable: true,
-                        status: "error"
-                    })
+
+                    toast({ title: "Error", isClosable: true, description: data.error, status: "error", duration: 3000 })
+
                 }
-                setMessages(data)
-
+                setMessages(data);
             } catch (error) {
-                // toast({
-                //     title: "error",
-                //     description: error.message,
-                //     duration: 3000,
-                //     isClosable: true,
-                //     status: "error"
-                // })
-            } finally {
-                setLoadingMessaegs(false)
-            }
+                // toast({ title: "Error", isClosable: true, description: error.message, status: "error", duration: 3000 })
 
-        }
-        getMessages()
-    }, [toast, selectedConversation.userId, selectedConversation.mock])
+            } finally {
+                setLoadingMessaegs(false);
+            }
+        };
+
+        getMessages();
+    }, [toast, selectedConversation.userId, selectedConversation.mock]);
     return (
         <Flex p={2} ml={2} gap={2} flex={70} px={1} borderRadius={'md'} flexDir={'column'}>
 
