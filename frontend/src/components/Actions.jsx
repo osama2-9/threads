@@ -55,7 +55,13 @@ const Actions = ({ post }) => {
                 ...post,
                 likes: !liked ? [...post.likes, user._id] : post.likes.filter((id) => id !== user._id)
             };
-            setPostAction(updatedPost);
+            const updatedPosts = posts.map((p) => {
+                if (p._id === updatedPost._id) {
+                    return updatedPost;
+                }
+                return p;
+            });
+            setPostAction(updatedPosts);
             setLiked(!liked);
         } catch (error) {
             toast({ title: "Error", isClosable: true, description: error.message, status: "error", duration: 3000 })
@@ -80,9 +86,13 @@ const Actions = ({ post }) => {
             const data = await res.json();
             if (data.error) return toast({ title: "Hint", description: data.error, status: "info", isClosable: true })
 
+            const updatedPost = {
+                ...post,
+                replies: [...post.replies, data]
+            };
             const updatedPosts = posts.map((p) => {
-                if (p._id === posts._id) {
-                    return { ...p, replies: [...p.replies, data] };
+                if (p._id === updatedPost._id) {
+                    return updatedPost;
                 }
                 return p;
             });

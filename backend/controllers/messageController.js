@@ -50,6 +50,27 @@ async function sendMessage(req, res) {
     res.status(500).json({ error: error.message });
   }
 }
+async function CreateConversation(req, res) {
+  try {
+    const { recipientId } = req.params;
+    const senderId = req.user._id;
+
+    let conversation = await Conversation.findOne({
+      participants: { $all: [senderId, recipientId] },
+    });
+
+    if (!conversation) {
+      conversation = new Conversation({
+        participants: [senderId, recipientId],
+      });
+      await conversation.save();
+    }
+
+    res.status(201).json(conversation);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
 
 async function getMessages(req, res) {
   const { otherUserId } = req.params;
@@ -94,4 +115,4 @@ async function getConversations(req, res) {
   }
 }
 
-export { sendMessage, getMessages, getConversations };
+export { sendMessage, getMessages, getConversations, CreateConversation };

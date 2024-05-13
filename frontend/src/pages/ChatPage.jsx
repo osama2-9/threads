@@ -16,6 +16,7 @@ const ChatPage = () => {
     const [selectedConversation, setSelectedConversation] = useRecoilState(selectedConversationAtom)
     const [search, setSearch] = useState('')
     const logged = useRecoilValue(userAtom);
+
     useEffect(() => {
         const getConversations = async () => {
             try {

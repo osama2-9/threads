@@ -63,6 +63,23 @@ const UserHeadre = ({ user }) => {
             setUpdate(false)
         }
     }
+
+    const createConversation = async () => {
+        try {
+            const res = await fetch(`/api/messages/create/${user?._id}`, {
+                method: "POST",
+                headers: {
+                    "Contect-Type": "application/json"
+                },
+            })
+            const data = await res.json();
+            console.log(data);
+
+        } catch (error) {
+            toast({ title: "Error", description: error.message, status: "error", duration: 3000 })
+
+        }
+    }
     return (
         <VStack gap={4} alignItems={'start'}>
             <Flex justifyContent={'space-between'} w={'full'}>
@@ -90,16 +107,26 @@ const UserHeadre = ({ user }) => {
             <Text>{user.bio}</Text>
             {logged?._id === user?._id && (
                 <Link to={`/update`}>
-                    <Button>
+                    <Button >
                         Update Profile
                     </Button>
                 </Link>
             )}
-            {logged?._id !== user?._id && (
-                <Button isLoading={update} onClick={handleFollow}>
-                    {following ? "Unfollow" : "Follow"}
-                </Button>
-            )}
+            <Flex gap={2}>
+
+                {logged?._id !== user?._id && (
+                    <Button size={'sm'} isLoading={update} onClick={handleFollow}>
+                        {following ? "Unfollow" : "Follow"}
+                    </Button>
+                )}
+                {logged?._id !== user?._id && (
+                    <Link to={'/chat'}>
+                        <Button onClick={createConversation} size={'sm'} bg={'green.600'}>
+                            Message
+                        </Button>
+                    </Link>
+                )}
+            </Flex>
             <Flex w={'full'} justifyContent={'space-between'} >
                 <Flex gap={2} color={'gray.400'} alignItems={'center'}>
                     <Text>{user.followers ? user.followers.length : 0} Followers</Text>

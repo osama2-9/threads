@@ -22,7 +22,7 @@ export default function Login() {
     const setAuthScreen = useSetRecoilState(authAtom)
     const [showPassword, setShowPassword] = useState(false)
     const toast = useToast()
-    const [loading ,setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
     const setUser = useSetRecoilState(userAtom)
     const [inputs, setInputs] = useState({
         username: "",
@@ -34,14 +34,14 @@ export default function Login() {
     }
     const handleLogin = async () => {
         try {
-            setLoading(true)
+            setLoading(true);
             const res = await fetch('/api/users/login', {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(inputs)
-            })
+            });
 
             const data = await res.json();
             if (data.error) {
@@ -51,12 +51,11 @@ export default function Login() {
                     status: "error",
                     duration: 3000,
                     isClosable: true
-
-                })
+                });
+            } else {
+                localStorage.setItem('user-info', JSON.stringify(data));
+                setUser(data);
             }
-            localStorage.setItem('user-info', JSON.stringify(data))
-            setUser(data)
-
         } catch (error) {
             toast({
                 title: "Error",
@@ -64,13 +63,12 @@ export default function Login() {
                 status: "error",
                 duration: 3000,
                 isClosable: true
-
-            })
-        }finally{
-            setLoading(false)
+            });
+        } finally {
+            setLoading(false);
         }
-
     }
+
     return (
         <Flex
             align={'center'}
