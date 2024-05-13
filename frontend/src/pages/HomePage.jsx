@@ -29,7 +29,7 @@ const HomePage = () => {
 
 
       } catch (error) {
-        toast({ title: "Error", isClosable: true, description: error.message, status: "error", duration: 3000 })
+        // toast({ title: "Error", isClosable: true, description: error.message, status: "error", duration: 3000 })
 
 
       } finally {
@@ -56,8 +56,8 @@ const HomePage = () => {
         )
       }
 
-      {posts.map((post)=>(
-        <Post key={post._id} post={post} postBy={post.postBy}/>
+     {posts.map((post) => (
+        <Post key={post._id} post={post} postBy={post.postBy} />
       ))}
 
     </>

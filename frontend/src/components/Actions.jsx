@@ -92,14 +92,15 @@ const Actions = ({ post }) => {
             toast({ title: "Success", description: "Reply posted successfully", status: "success" });
             setReply("");
         } catch (error) {
-            // toast({
-            //     title: "Error",
-            //     description: error.message,
-            //     duration: 3000,
-            //     status: "error",
-            //     isClosable: true
+            toast({
+                title: "Error",
+                description: error.message,
+                duration: 3000,
+                status: "error",
+                isClosable: true
 
-            // })
+            })
+            console.log(error);
 
         } finally {
             setIsReplying(false);
@@ -157,13 +158,15 @@ const Actions = ({ post }) => {
 
             <Flex gap={2} alignItems={"center"}>
                 <Text color={"gray.light"} fontSize='sm'>
-                    {post?.replies.length} replies
+                    {post?.replies && post.replies.length} replies
                 </Text>
                 <Box w={0.5} h={0.5} borderRadius={"full"} bg={"gray.light"}></Box>
                 <Text color={"gray.light"} fontSize='sm'>
                     {post?.likes.length} likes
                 </Text>
             </Flex>
+
+
 
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -189,7 +192,7 @@ const Actions = ({ post }) => {
             </Modal>
         </Flex>
     );
-};
+}
 
 export default Actions;
 

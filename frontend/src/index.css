@@ -24,3 +24,15 @@
 .icon-container:hover {
   background-color: "#1e1e1e";
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #eee;
+}

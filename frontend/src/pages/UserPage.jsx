@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react"
 import UserHeadre from "../components/UserHeadre"
-import UserPost from "../components/UserPost"
 import { useParams } from "react-router-dom"
 import { Flex, Spinner, useToast } from "@chakra-ui/react"
 import { Button } from "@chakra-ui/react"
@@ -22,7 +21,6 @@ const UserPage = () => {
             try {
                 const res = await fetch(`/api/posts/user/${username}`)
                 const data = await res.json();
-                console.log(data);
                 setPosts(data);
             } catch (error) {
                 toast({ title: "Error", isClosable: true, description: error.message, status: "error", duration: 3000 })

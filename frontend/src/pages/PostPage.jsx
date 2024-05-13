@@ -128,7 +128,7 @@ const PostPage = () => {
 
 
       <Divider my={4} />
-      {post?.replies.map((rep, index) => (
+      {post?.replies && post.replies.map((rep, index) => (
         <Comment
           key={rep._id}
           replay={rep}
