@@ -13,6 +13,8 @@ connectDB();
 
 const PORT = process.env.PORT || 5000;
 
+app.get("/",(req,res)=>{res.send("hi api")})
+
 cloudinary.config({
   cloud_name: process.env.C_C_NAME,
   api_key: process.env.C_API_KEY,
