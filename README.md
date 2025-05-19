@@ -10,7 +10,7 @@
 
 ###
 
-<h4 align="left">this a simple threads clone<br>admin dashbord coming soon<br>chat app invoked in this clone coming soon🔥</h4>
+<h4 align="left">this a simple threads clone</h4>
 
 ###
 
